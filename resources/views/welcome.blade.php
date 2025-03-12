@@ -22,6 +22,7 @@
                     <thead>
                         <tr class="bg-gray-800 text-white">
                             <th class="py-3 px-4 text-left">User Id</th>
+                            <th class="py-3 px-4 text-left">Product Image</th>
                             <th class="py-3 px-4 text-left">Product Name</th>
                             <th class="py-3 px-4 text-left">Price</th>
                             <th class="py-3 px-4 text-left">Quantity</th>
@@ -31,6 +32,14 @@
                         @foreach ($cartItems as $item)
                             <tr class="border-b hover:bg-gray-100">
                                 <td class="py-3 px-4">{{ $item->user_id }}</td>
+                                <td class="py-3 px-4">
+                                    @if ($item->product->images->isNotEmpty())
+                                        <img src="{{ asset('storage/' . $item->product->images->first()->product_image) }}"
+                                            alt="Product Image" class="w-16 h-16 object-cover rounded">
+                                    @else
+                                        <span class="text-gray-500">No Image</span>
+                                    @endif
+                                </td>
                                 <td class="py-3 px-4">{{ $item->product->name }}</td>
                                 <td class="py-3 px-4">${{ number_format($item->product->price, 2) }}</td>
                                 <td class="py-3 px-4">{{ $item->quantity }}</td>
