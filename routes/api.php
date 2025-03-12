@@ -12,4 +12,4 @@ Route::get('/products-list', [ProductController::class, 'index']);
 Route::post('/products', [ProductController::class, 'store']);
 
 Route::post('/cart', [CartController::class, 'addToCart']);
-Route::get('/cart', [CartController::class, 'viewCart']);
+Route::get('/cart-view', [CartController::class, 'viewCart']);
