@@ -32,6 +32,8 @@ class CartController extends Controller
     }
 
     public function viewCart() {
-        return response()->json(CartItem::with('product')->where('user_id', 1)->get());
+        $cartItems = CartItem::with('product')->where('user_id', 1)->get();
+        return view('welcome', compact('cartItems'));
+
     }
 }
